@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdakhlao <sdakhlao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 16:00:13 by aarmitan          #+#    #+#             */
-/*   Updated: 2025/04/18 10:35:54 by sdakhlao         ###   ########.fr       */
+/*   Updated: 2025/04/18 14:18:21 by aarmitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void	sig_child(int signal)
 
 void	set_sig_child(void)
 {
-	printf("1\n");
 	signal(SIGINT, sig_child);
 	signal(SIGQUIT, sig_child);
 	signal(SIGPIPE, sig_child);
@@ -41,7 +40,7 @@ void	catch_sigint_exit(t_data *data)
 	if (g_sig_exit)
 	{
 		g_sig_exit = 0;
-		clean_program(data);
+		clean_program_exec(data);
 		exit(2);
 	}
 }

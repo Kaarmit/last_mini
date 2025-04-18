@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdakhlao <sdakhlao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 11:55:23 by aarmitan          #+#    #+#             */
-/*   Updated: 2025/04/18 11:16:30 by sdakhlao         ###   ########.fr       */
+/*   Updated: 2025/04/18 14:10:50 by aarmitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,16 @@ void	clean_program(t_data *data)
 
 void	clean_program_exec(t_data *data)
 {
+	int i;
+	char	buf[1];
+
+	i = 0;
+	while (i < 150)
+	{
+		if (read(i, &buf, 0) != -1)
+			close(i);
+		i++;
+	}
 	if (data->envcpy)
 		free_envcpy(data->envcpy);
 	clear_env_lst(&data->env);

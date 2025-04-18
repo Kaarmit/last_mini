@@ -279,3 +279,4 @@ int	init_lst(t_data *data, t_chunk *chunk)
 	}
 	return (1);
 }
+
