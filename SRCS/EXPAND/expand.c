@@ -6,7 +6,7 @@
 /*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:07:34 by aarmitan          #+#    #+#             */
-/*   Updated: 2025/04/16 17:09:11 by aarmitan         ###   ########.fr       */
+/*   Updated: 2025/04/18 11:04:12 by aarmitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,4 +126,3 @@ char	*expande_moi(char *s, char **env)
 	}
 	return (s);
 }
-

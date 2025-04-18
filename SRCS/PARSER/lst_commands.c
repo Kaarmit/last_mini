@@ -12,18 +12,6 @@
 
 #include "../INCLUDES/minishell.h"
 
-void	free_args(char **args)
-{
-	int	i;
-
-	if (!args)
-		return ;
-	i = 0;
-	while (args[i])
-		free(args[i++]);
-	free(args);
-}
-
 t_chunk	*lst_new_chunk(void)
 {
 	t_chunk	*node;

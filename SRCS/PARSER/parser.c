@@ -94,5 +94,3 @@ int	parse_tokens(t_data *data, t_token **tokens)
 	free_lst(*tokens);
 	return (0);
 }
-
-

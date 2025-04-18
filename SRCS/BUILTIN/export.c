@@ -6,7 +6,7 @@
 /*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 10:36:30 by aarmitan          #+#    #+#             */
-/*   Updated: 2025/04/16 13:16:42 by aarmitan         ###   ########.fr       */
+/*   Updated: 2025/04/18 10:59:23 by aarmitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,4 +136,3 @@ int	export(t_env **lst, char **args, t_data *data)
 	}
 	return (ret);
 }
-

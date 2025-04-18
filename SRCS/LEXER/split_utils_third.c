@@ -6,7 +6,7 @@
 /*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:42:44 by aarmitan          #+#    #+#             */
-/*   Updated: 2025/04/16 17:02:15 by aarmitan         ###   ########.fr       */
+/*   Updated: 2025/04/18 11:04:34 by aarmitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ char	*malloc_quote_word(char **s)
 		return (ft_strdup(""));
 	return (create_word(start, len));
 }
-
 
 char	*malloc_operator_word(char **s)
 {
