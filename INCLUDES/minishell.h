@@ -6,7 +6,7 @@
 /*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 15:38:11 by sdakhlao          #+#    #+#             */
-/*   Updated: 2025/04/17 14:49:01 by aarmitan         ###   ########.fr       */
+/*   Updated: 2025/04/18 11:07:24 by aarmitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ int						count(char *s, char c);
 int						check_syntax(char *str);
 void					free_lst(t_token *head);
 void					syntax_error(char *str);
-char					**malloc_free(char **tab);
+char    				**malloc_free(char **tab);
 char					*ft_strdup(const char *s);
 void					clear_env_lst(t_env **lst);
 t_token					*merge_args(t_token *head);
@@ -242,7 +242,7 @@ int						is_quoted_arg(char *str);
 int						is_space(char *str);
 int						skip_word(char *s, int i, char c);
 char					**rewrite_env_tab(t_env *envlst);
-
+void					free_args(char **args);
 
 #endif
 

@@ -187,7 +187,7 @@ void	get_delim(t_io_chunk *io)
 	io->value = malloc(sizeof(char *) * 2);
 	if (!io->value)
 		return ;
-	io->value[0] = io->path;
+	io->value[0] = ft_strdup(io->path);
 	io->value[1] = NULL;
 	return ;
 }
@@ -250,9 +250,13 @@ int	init_heredoc(t_data *data, t_chunk *chunk)
 			if (quit_here(fd, &pid))
 				return (0);
 			io->here_doc = fd[0];
+			close(io->here_doc);
 		}
 		else
-			io->value = &io->path;
+		{
+			io->value[0] = ft_strdup(io->path);
+			io->value[1] = NULL;
+		}
 		io = io->next;
 	}
 	return (1);
