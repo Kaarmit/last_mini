@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdakhlao <sdakhlao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:07:34 by aarmitan          #+#    #+#             */
-/*   Updated: 2025/04/17 20:45:13 by sdakhlao         ###   ########.fr       */
+/*   Updated: 2025/04/18 15:28:19 by aarmitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,26 +109,27 @@ char	*expande_moi(char *s, char **env)
 	char	*str;
 
 	i = 0;
-	str = NULL;
-	// if (ft_strcmp("$?", s) == 0)
-	// {
-	// 	i = single_exit_s(0, RETRIEVE);
-	// 	free(s);
-	// 	s = ft_itoa(i);
-	// 	return (s);
-	// }
-	while (s[i])
+	while (s && s[i])
 	{
 		if (s[i] == '$')
 		{
 			str = cplc(&s[i], env);
+			if (!str)
+				return (s);
 			if (ft_strcmp(str, s) != 0)
+			{
 				s = do_it(s, &s[i], str);
+				free(str);
+				return (s);
+			}
+			if (str && str != s)
+				free(str);
 		}
 		i++;
 	}
-	if (str)
-		free(str);
+	
 	return (s);
 }
+
+
 

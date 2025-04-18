@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdakhlao <sdakhlao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 15:35:27 by sdakhlao          #+#    #+#             */
-/*   Updated: 2025/04/18 11:14:38 by sdakhlao         ###   ########.fr       */
+/*   Updated: 2025/04/18 15:25:47 by aarmitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	programm(t_data *data)
 		else
 		{
 			parse_tokens(data, &data->token);
+			print_tokens(data->chunk);
 			init_lst(data, data->chunk);
 			if (!data->chunk)
 				free_data_bis(data);

@@ -250,7 +250,6 @@ int	init_heredoc(t_data *data, t_chunk *chunk)
 			if (quit_here(fd, &pid))
 				return (0);
 			io->here_doc = fd[0];
-			close(io->here_doc);
 		}
 		else
 		{

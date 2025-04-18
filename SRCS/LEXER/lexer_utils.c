@@ -6,7 +6,7 @@
 /*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:36:26 by sdakhlao          #+#    #+#             */
-/*   Updated: 2025/04/15 15:07:44 by aarmitan         ###   ########.fr       */
+/*   Updated: 2025/04/18 15:28:51 by aarmitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	create_node(t_data *data, char *token, int type, char **env)
 {
 	t_token	*node;
+	char	*tmp;
 
 	if (!token)
 		return ;
@@ -31,13 +32,16 @@ void	create_node(t_data *data, char *token, int type, char **env)
 	if (node->type == EXP_ARG)
 		node->token = cut_dq(node->token);
 	else
-		node->token = expande_moi(node->token, env);
-	(void)env;
+	{
+		tmp = ft_strdup(node->token);
+		free(node->token);
+		node->token = expande_moi(tmp, env);
+	}
 	node->next = NULL;
 	node->prev = NULL;
 	add_end(&data->token, node);
-	return ;
 }
+
 
 char	*cut_dq(char *str)
 {

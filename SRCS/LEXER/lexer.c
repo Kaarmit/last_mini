@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdakhlao <sdakhlao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 15:30:24 by sdakhlao          #+#    #+#             */
-/*   Updated: 2025/04/17 21:17:34 by sdakhlao         ###   ########.fr       */
+/*   Updated: 2025/04/18 15:23:12 by aarmitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int	lexer(t_data *data)
 
 	i = 0;
 	data->token = NULL;
+	if (!data->brut_input)
+		return (0);
 	data->tokens = ft_spliit(data->brut_input, ' ');
 	if (!data->tokens)
 		return (0);
