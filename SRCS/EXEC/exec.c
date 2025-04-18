@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdakhlao <sdakhlao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 10:36:54 by aarmitan          #+#    #+#             */
-/*   Updated: 2025/04/17 15:10:16 by aarmitan         ###   ########.fr       */
+/*   Updated: 2025/04/17 19:37:02 by sdakhlao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	process(t_data *data, pid_t pid1)
 	if (pid1 == 0)
 	{
 		if (is_dot(data->chunk->cmd))
-			return (free_data_exec(data));
+			return (clean_program_exec(data));
 		if (is_dir(data->chunk->cmd))
-			return (free_data_exec(data));
+			return (clean_program_exec(data));
 		redir(data->chunk);
 		exec_cmd(data, data->chunk->args, data->envcpy);
 	}
@@ -74,13 +74,7 @@ void	pre_exec(t_data *data)
 
 	chunk = data->chunk;
 	if (chunk && !(chunk->next))
-	{
-		printf("DEBUG: Single chunk\n");
 		exec(data);
-	}
 	else
-	{
-		printf("DEBUG: Multiple chunks\n");
 		execs(data, &data->chunk);
-	}
 }

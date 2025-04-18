@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdakhlao <sdakhlao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:07:34 by aarmitan          #+#    #+#             */
-/*   Updated: 2025/04/18 11:04:12 by aarmitan         ###   ########.fr       */
+/*   Updated: 2025/04/17 20:45:13 by sdakhlao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ char	*cplc(char *s, char **env)
 	int		i;
 
 	i = 1;
+	str2 = NULL;
 	while (s[i] && s[i] != ' ' && s[i] != '$')
 		i++;
 	str = malloc((i + 1) * sizeof(char));
@@ -73,6 +74,8 @@ char	*cplc(char *s, char **env)
 	}
 	str[i - 1] = '=';
 	str[i] = '\0';
+	if (ft_strcmp(str, "?=") == 0)
+		return (free(str), ft_itoa(single_exit_s(0, RETRIEVE)));
 	str = expand(str, env);
 	str2 = cplc2(s);
 	if (ft_strcmp(str, str2) == 0)
@@ -107,13 +110,13 @@ char	*expande_moi(char *s, char **env)
 
 	i = 0;
 	str = NULL;
-	if (ft_strcmp("$?", s) == 0)
-	{
-		i = single_exit_s(0, RETRIEVE);
-		free(s);
-		s = ft_itoa(i);
-		return (s);
-	}
+	// if (ft_strcmp("$?", s) == 0)
+	// {
+	// 	i = single_exit_s(0, RETRIEVE);
+	// 	free(s);
+	// 	s = ft_itoa(i);
+	// 	return (s);
+	// }
 	while (s[i])
 	{
 		if (s[i] == '$')
@@ -124,5 +127,8 @@ char	*expande_moi(char *s, char **env)
 		}
 		i++;
 	}
+	if (str)
+		free(str);
 	return (s);
 }
+

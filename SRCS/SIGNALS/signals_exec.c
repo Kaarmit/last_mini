@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdakhlao <sdakhlao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 16:00:13 by aarmitan          #+#    #+#             */
-/*   Updated: 2025/04/15 14:20:33 by aarmitan         ###   ########.fr       */
+/*   Updated: 2025/04/18 10:35:54 by sdakhlao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,4 @@ void	catch_sigint_exit(t_data *data)
 		clean_program(data);
 		exit(2);
 	}
-}
-
-bool	end_cmd(int fd[2], int *pid)
-{
-	printf("4\n");
-	waitpid(*pid, pid, 0);
-	close(fd[1]);
-	if (WIFEXITED(*pid) && WEXITSTATUS(*pid) == SIGINT)
-		return (single_exit_s(130, UPDATE), true);
-	return (false);
 }

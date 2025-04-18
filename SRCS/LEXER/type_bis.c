@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_bis.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdakhlao <sdakhlao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:53:36 by aarmitan          #+#    #+#             */
-/*   Updated: 2025/04/18 11:04:52 by aarmitan         ###   ########.fr       */
+/*   Updated: 2025/04/17 21:02:27 by sdakhlao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int	is_quoted_arg(char *str)
 
 int	is_space(char *str)
 {
-	int	i;
+	int	i = 0;
 
-	i = 0;
 	if (!str || str[0] == '\0')
 		return (0);
 	while (str[i] && str[i] == ' ')
 		i++;
 	return (str[i] == '\0');
 }
+

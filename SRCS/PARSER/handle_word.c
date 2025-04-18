@@ -39,7 +39,7 @@ int	handle_word(t_chunk **chunk_lst, t_token **token_lst)
 	t_chunk	*current;
 
 	start = *token_lst;
-	while (start && start->type == ARG)
+	while (start && start->type < PIPE)
 	{
 		current = lst_last_chunk(*chunk_lst);
 		if (!current)

@@ -17,7 +17,7 @@ int	count_args(t_token *start)
 	int	count;
 
 	count = 0;
-	while (start && start->type == ARG)
+	while (start && (start->type == ARG || start->type == EXP_ARG))
 	{
 		count++;
 		start = start->next;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdakhlao <sdakhlao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 15:38:11 by sdakhlao          #+#    #+#             */
-/*   Updated: 2025/04/18 11:07:24 by aarmitan         ###   ########.fr       */
+/*   Updated: 2025/04/18 10:35:32 by sdakhlao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ typedef enum e_err_msg
 	UNCLEAR_REDIR,
 	PERM_DENIED
 }						t_err_msg;
+
+typedef enum e_fsm
+{
+	NORMAL = 1,
+	DOUBLE,
+	SINGLE,
+}						t_fsm;
 
 typedef enum e_type
 {
@@ -86,6 +93,7 @@ typedef struct s_io_chunk
 {
 	t_io_type			type;
 	char				*path;
+	char				**value;
 	int					here_doc;
 	struct s_io_chunk	*next;
 	struct s_io_chunk	*prev;
@@ -148,12 +156,13 @@ int						count(char *s, char c);
 int						check_syntax(char *str);
 void					free_lst(t_token *head);
 void					syntax_error(char *str);
-char    				**malloc_free(char **tab);
+char					**malloc_free(char **tab);
 char					*ft_strdup(const char *s);
 void					clear_env_lst(t_env **lst);
 t_token					*merge_args(t_token *head);
 char					*two_first_char(char *cmd);
 void					free_envcpy(char **envcpy);
+void					heredoc_handler(int signal);
 void					free_data_bis(t_data *data);
 t_chunk					*init_chunk(t_chunk *chunk);
 // void					free_data_exit(t_data *data);
@@ -165,6 +174,7 @@ int						init_io_chunk(t_chunk *chunk);
 t_chunk					*lst_last_chunk(t_chunk *cmd);
 char					**ft_split(char *s, char sep);
 void					init_io_struct(t_io_chunk *io);
+void					catch_sigint_exit(t_data *data);
 int						syntax_precheck(t_token **head);
 char					*ft_strjoin(char *s1, char *s2);
 int						count_existing_args(char **args);
@@ -178,18 +188,18 @@ char					*error_message(int error, char *cmd);
 void					lst_add_back(t_env **lst, t_env *cmd);
 void					fill_env_lst(char **env, t_env **lst);
 char					*is_double_quote(char **s, char quote);
+int						init_lst(t_data *data, t_chunk *chunk);
 char					*only_print_var(char *name, t_env **lst);
 void					execs(t_data *data, t_chunk **chunk_lst);
 int						quote_handle(char *s, char quote, int i);
 int						dq_len(char **s, char *start, char quote);
 int						add_end(t_token **head, t_token *new_node);
-int					parse_tokens(t_data *data, t_token **tokens);
+int						parse_tokens(t_data *data, t_token **tokens);
 int						unset(char **args, t_env **lst, t_data *data);
 int						export(t_env **lst, char **args, t_data *data);
 void					exec_cmd(t_data *data, char **cmd, char **env);
 void					replace_var(char *prev, char *new, t_env **lst);
 int						handle_word(t_chunk **chunk, t_token **token_lst);
-// void					do_builtin(t_data *data, t_chunk *chunk, char *cmd);
 void					do_builtin(t_data *data, t_chunk *chunk, char *cmd);
 void					lst_clear_chunk(t_chunk **lst, void (*del)(void *));
 int						set_args(t_token **token_lst, t_chunk *current_chunk);
@@ -220,6 +230,7 @@ char					*get_var_name(char *var);
 char					*get_var_content(char *var);
 /**/
 void					clean_program(t_data *data);
+void					clean_program_exec(t_data *data);
 char					*get_name(char *env);
 void					free_data(t_data *data);
 
@@ -242,7 +253,7 @@ int						is_quoted_arg(char *str);
 int						is_space(char *str);
 int						skip_word(char *s, int i, char c);
 char					**rewrite_env_tab(t_env *envlst);
-void					free_args(char **args);
+
 
 #endif
 

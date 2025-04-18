@@ -6,7 +6,7 @@
 /*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 10:36:10 by aarmitan          #+#    #+#             */
-/*   Updated: 2025/04/18 10:59:15 by aarmitan         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:08:48 by aarmitan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	cd_home(t_data *data)
 	if (!path)
 	{
 		perror("cd: ");
+		// printf("%s: ", path);
+		// perror("No such file or directory\n");
 		return (1);
 	}
 	if (chdir(path) == 0)
@@ -73,3 +75,34 @@ int	ft_cd(t_chunk *chunk, t_data *data)
 	free(cwd);
 	return (0);
 }
+
+// int	ft_cd(t_chunk *chunk, t_data *data)
+// {
+// 	int		i;
+// 	char	*cwd;
+
+// 	i = 0;
+// 	while (chunk->args[i])
+// 		i++;
+// 	if (i > 2)
+// 	{
+// 		ft_putstr_fd("minishell: cd: too many arguments\n", 2);
+// 		return (1);
+// 	}
+// 	if (!(chunk->args[1]) || strcmp(chunk->args[1], "~") == 0)
+// 		return (cd_home(data));
+// 	cwd = getcwd(NULL, 0);
+// 	if (!cwd)
+// 	{
+// 		ft_putstr_fd("chdir: error retrieving current directory: ", 2);
+// 		return (1);
+// 	}
+// 	if (chdir(chunk->args[1]) != 0)
+// 	{
+// 		ft_putstr_fd("minishell: cd: ", 2);
+// 		ft_putstr_fd(chunk->args[1], 2);
+// 		ft_putstr_fd(": No such file or directory\n", 2);
+// 		return(free(cwd), 1) ;
+// 	}
+// 	return (change_pwd(&data->env, cwd), 0);
+// }

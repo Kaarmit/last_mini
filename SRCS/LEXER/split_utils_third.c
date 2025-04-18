@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_utils_third.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdakhlao <sdakhlao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:42:44 by aarmitan          #+#    #+#             */
-/*   Updated: 2025/04/18 11:04:34 by aarmitan         ###   ########.fr       */
+/*   Updated: 2025/04/17 21:34:11 by sdakhlao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	*malloc_quote_word(char **s)
 		return (ft_strdup(""));
 	return (create_word(start, len));
 }
+
 
 char	*malloc_operator_word(char **s)
 {

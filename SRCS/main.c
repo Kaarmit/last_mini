@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdakhlao <sdakhlao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 15:35:27 by sdakhlao          #+#    #+#             */
-/*   Updated: 2025/04/17 16:02:28 by aarmitan         ###   ########.fr       */
+/*   Updated: 2025/04/18 11:14:38 by sdakhlao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	programm(t_data *data)
 	{
 		if (!data->brut_input)
 		{
-			//free(data->brut_input);
 			free_envcpy(data->envcpy);
 			lst_clear_chunk(&data->chunk, &free_ptr);
 			clear_env_lst(&data->env);
@@ -74,14 +73,14 @@ void	programm(t_data *data)
 		else
 		{
 			parse_tokens(data, &data->token);
-			print_tokens(data->chunk);
+			init_lst(data, data->chunk);
 			if (!data->chunk)
 				free_data_bis(data);
 			else
 				pre_exec(data);
 			eofl(data);
 			set_signals();
-			
+
 		}
 		data->brut_input = prompt();
 	}

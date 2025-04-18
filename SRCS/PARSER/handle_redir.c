@@ -61,8 +61,8 @@ int	handle_redirection(t_chunk **chunk_lst, t_token **token_lst, t_type type)
 	while (start->type <= PIPE)
 		start = start->next;
 	last_io->type = io_type(type, last_io);
-	if (last_io->here_doc != 1)
-		last_io->path = ft_strdup(start->next->token);
+	// if (last_io->here_doc != 1)
+	last_io->path = ft_strdup(start->next->token);
 	if (!last_io->path)
 		return (-1);
 	start = get_next_token(start);

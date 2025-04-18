@@ -15,6 +15,7 @@
 void	init_io_struct(t_io_chunk *io)
 {
 	io->path = NULL;
+	io->value = NULL;
 	io->next = NULL;
 	io->prev = NULL;
 	io->here_doc = 0;
@@ -46,10 +47,29 @@ int	init_io_chunk(t_chunk *chunk)
 	return (1);
 }
 
+void	free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	if (tab)
+	{
+		while (tab[i])
+		{
+			free(tab[i]);
+			i++;
+		}
+		free(tab);
+	}
+	return ;
+}
+
 void	lstdelone_io_list(t_io_chunk *io_node, void (*del)(void *))
 {
 	if (io_node->path)
 		(*del)(io_node->path);
+	if (io_node->value)
+		free_tab(io_node->value);
 	(*del)(io_node);
 }
 

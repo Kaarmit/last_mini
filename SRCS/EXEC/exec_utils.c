@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarmitan <aarmitan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdakhlao <sdakhlao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 10:36:50 by aarmitan          #+#    #+#             */
-/*   Updated: 2025/04/17 15:01:35 by aarmitan         ###   ########.fr       */
+/*   Updated: 2025/04/17 19:31:57 by sdakhlao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	exec_cmd(t_data *data, char **cmd, char **env)
 	if (!path)
 	{
 		printf("minishell: %s: command not found\n", cmd[0]);
-		exit(127) ;
+		clean_program_exec(data);
 	}
 	if (execve(path, cmd, env) == -1)
 		exit(127);

@@ -75,7 +75,7 @@ int	parse_tokens(t_data *data, t_token **tokens)
 	{
 		if (new_chunk(data, &start) == -1)
 			return (1);
-		if ((start->type == ARG && !start->prev) || (start->type == ARG
+		if ((start->type < PIPE && !start->prev) || (start->type < PIPE
 				&& start->prev && start->prev->type <= PIPE))
 		{
 			if (handle_word(&data->chunk, &start) == -1)
@@ -94,3 +94,5 @@ int	parse_tokens(t_data *data, t_token **tokens)
 	free_lst(*tokens);
 	return (0);
 }
+
+
